@@ -1,0 +1,151 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>CHURCH AU - Dark RPG</title>
+    
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Cinzel+Decorative:wght@700&family=Ruslan+Display&display=swap" rel="stylesheet">
+
+    <style>
+        :root {
+            --bg-deep: #050505;
+            --accent-burgundy: #7a1222; /* Сделал чуть ярче для пульсации */
+            --text-color: #e2dce2;
+            --font-gothic: 'Ruslan Display', cursive, 'Georgia', serif;
+        }
+
+        body, html {
+            margin: 0; padding: 0; width: 100%; height: 100%;
+            background-color: var(--bg-deep);
+            color: var(--text-color);
+            overflow: hidden;
+            display: flex; justify-content: center; align-items: center;
+        }
+
+        /* --- УСИЛЕННАЯ ПУЛЬСАЦИЯ --- */
+        .pulse-bg {
+            position: fixed;
+            top: 50%; left: 50%;
+            width: 150vmax; height: 150vmax;
+            transform: translate(-50%, -50%);
+            /* Радиальный градиент стал плотнее */
+            background: radial-gradient(circle, var(--accent-burgundy) 0%, rgba(0,0,0,0) 30%);
+            z-index: 1;
+            animation: deepPulse 1s ease-in-out infinite;
+            pointer-events: none;
+        }
+
+        @keyframes deepPulse {
+            0%, 100% { opacity: 0.2; transform: translate(-50%, -50%) scale(0.8); }
+            50% { opacity: 0.7; transform: translate(-50%, -50%) scale(1.1); }
+        }
+
+        /* --- НОВЫЙ ВИДИМЫЙ ТУМАН (БЕЗ КАРТИНОК) --- */
+        .fog-wrapper {
+            position: fixed;
+            top: 0; left: 0;
+            width: 100%; height: 100%;
+            z-index: 3;
+            pointer-events: none;
+        }
+
+        .fog-cloud {
+            position: absolute;
+            width: 200%; height: 100%;
+            /* Создаем эффект дымки через повторяющийся градиент */
+            background: repeat-x url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='1000' height='1000' viewBox='0 0 1000 1000'%3E%3Cfilter id='f' x='0' y='0'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='.005' numOctaves='5' /%3E%3C/feColorMatrix values='1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 0 0 0 0.4 0' /%3E%3C/filter%3E%3Crect width='1000' height='1000' filter='url(%23f)' opacity='.3'/%3E%3C/svg%3E");
+            background-size: 2000px 100%;
+            opacity: 0.5; /* Теперь туман точно видно */
+            animation: moveFog 40s linear infinite;
+        }
+
+        .fog-cloud.reverse {
+            opacity: 0.9;
+            animation: moveFog 60s linear infinite reverse;
+            filter: blur(4px);
+        }
+
+        @keyframes moveFog {
+            from { background-position: 0 0; }
+            to { background-position: 2000px 0; }
+        }
+
+        /* --- ФОНОВЫЕ КРЕСТЫ --- */
+        .crosses {
+            position: fixed; top: 0; left: 0; width: 100%; height: 100%;
+            z-index: 0; opacity: 0.08;
+            background-image: url("data:image/svg+xml,%3Csvg width='80' height='120' viewBox='0 0 80 120' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath d='M15 0v100M15 40h50' stroke='%23ffffff' stroke-width='1' fill='none'/%3E%3C/svg%3E");
+        }
+
+        /* --- ИНТЕРФЕЙС --- */
+        .main-ui {
+            position: relative;
+            z-index: 10;
+            text-align: center;
+        }
+
+        h1 {
+            font-family: 'Cinzel Decorative', serif;
+            font-size: clamp(3rem, 12vw, 7.5rem);
+            margin-bottom: 60px;
+            letter-spacing: 20px;
+            color: var(--text-color);
+            text-shadow: 0 0 40px rgba(122, 18, 34, 0.8);
+            text-transform: uppercase;
+        }
+
+        .nav-box {
+            display: flex;
+            gap: 40px;
+            justify-content: center;
+            flex-wrap: wrap;
+        }
+
+.gothic-btn {
+            text-decoration: none;
+            color: var(--text-color);
+            font-family: var(--font-gothic);
+            font-size: 1.6rem;
+            padding: 20px 60px;
+            background: rgba(0, 0, 0, 0.6);
+            border: 1px solid var(--accent-burgundy);
+            position: relative;
+            transition: all 0.5s ease;
+            clip-path: polygon(15% 0, 85% 0, 100% 50%, 85% 100%, 15% 100%, 0 50%);
+            display: inline-block;
+        }
+
+        .gothic-btn:hover {
+            background: var(--accent-burgundy);
+            box-shadow: 0 0 40px var(--accent-burgundy);
+            transform: scale(1.05);
+            color: #fff;
+        }
+
+    </style>
+</head>
+<body>
+
+    <div class="crosses"></div>
+    <div class="pulse-bg"></div>
+    
+    <div class="fog-wrapper">
+        <div class="fog-cloud"></div>
+        <div class="fog-cloud reverse"></div>
+    </div>
+
+    <div class="main-ui">
+        <h1>CHURCH AU</h1>
+        
+        <nav class="nav-box">
+            <a href="history.html" target="_blank" class="gothic-btn">ИСТОРИЯ</a>
+            <a href="characters.html" target="_blank" class="gothic-btn">ПЕРСОНАЖИ</a>
+            <a href="other.html" target="_blank" class="gothic-btn">ПРОЧЕЕ</a>
+        </nav>
+    </div>
+
+</body>
+</html>

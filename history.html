@@ -1,0 +1,133 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <title>CHURCH AU - Archives</title>
+    <link href="https://fonts.googleapis.com/css2?family=EB+Garamond:ital,wght@0,400;1,400&family=Ruslan+Display&display=swap" rel="stylesheet">
+    <style>
+        body {
+            background: #0f0e10;
+            color: #d1c7d1;
+            font-family: 'EB Garamond', serif;
+            margin: 0;
+            padding: 50px;
+        }
+
+        h1 {
+            font-family: 'Ruslan Display', cursive;
+            text-align: center;
+            color: #5c1a26;
+            font-size: 3rem;
+            margin-bottom: 60px;
+        }
+
+        .archives-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 40px;
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+
+        /* Стиль конверта */
+        .envelope {
+            background: #1a181b;
+            border: 1px solid #3d3436;
+            padding: 40px;
+            position: relative;
+            cursor: pointer;
+            transition: 0.4s;
+            overflow: hidden;
+            box-shadow: 5px 5px 15px rgba(0,0,0,0.5);
+        }
+
+            .envelope::before {
+                content: '';
+                position: absolute;
+                top: 0;
+                left: 0;
+                width: 100%;
+                height: 10px;
+                background: #5c1a26;
+            }
+
+            .envelope:hover {
+                transform: scale(1.02);
+                border-color: #5c1a26;
+            }
+
+            .envelope h2 {
+                font-family: 'Ruslan Display', cursive;
+                font-size: 1.2rem;
+                color: #8a7a99;
+            }
+
+            .envelope p {
+                font-style: italic;
+                opacity: 0.7;
+                margin-top: 15px;
+            }
+
+        .wax-seal {
+            position: absolute;
+            bottom: 20px;
+            right: 20px;
+            width: 40px;
+            height: 40px;
+            background: #4a141d;
+            border-radius: 50%;
+            border: 2px dashed #6e1e2d;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 0.8rem;
+        }
+
+        /* Кнопка возврата на главную */
+        .return-btn {
+            position: fixed;
+            top: 20px;
+            left: 20px;
+            z-index: 100;
+            text-decoration: none;
+            color: #e0d8e0;
+            font-family: 'Ruslan Display', cursive;
+            font-size: 1.2rem;
+            padding: 10px 25px;
+            background: rgba(10, 9, 11, 0.8);
+            border: 1px solid #5c1a26;
+            transition: all 0.3s ease;
+            clip-path: polygon(15% 0, 85% 0, 100% 50%, 85% 100%, 15% 100%, 0 50%);
+        }
+
+            .return-btn:hover {
+                background: #5c1a26;
+                box-shadow: 0 0 20px rgba(92, 26, 38, 0.7);
+                transform: scale(1.05);
+            }
+    </style>
+</head>
+<body>
+    <!-- Кнопка возврата -->
+    <a href="index.html" class="return-btn">НА ГЛАВНУЮ</a>
+
+    <h1>АРХИВЫ</h1>
+    <div class="archives-grid">
+        <div class="envelope">
+            <h2>Документ №01</h2>
+            <p>"Стены старого аббатства помнят молитвы, которые давно превратились в шепот..."</p>
+            <div class="wax-seal">?</div>
+        </div>
+        <div class="envelope">
+            <h2>Письмо</h2>
+            <p>Рукопись, найденная на чердаке. Описывает создание этого мира.</p>
+            <div class="wax-seal">?</div>
+        </div>
+        <div class="envelope">
+            <h2>Отчет инквизиции</h2>
+            <p>Записи о странных изменениях в поведении местных жителей. Текст залит бордовыми чернилами.</p>
+            <div class="wax-seal">?</div>
+        </div>
+    </div>
+</body>
+</html>

@@ -1,0 +1,150 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <title>CHURCH AU - Characters</title>
+    <link href="https://fonts.googleapis.com/css2?family=EB+Garamond:wght@400;600&family=Ruslan+Display&display=swap" rel="stylesheet">
+
+    <script type="module" src="https://ajax.googleapis.com/ajax/libs/model-viewer/3.3.0/model-viewer.min.js"></script>
+
+    <style>
+        body, html { margin: 0; height: 100%; background: #0d0c0e; color: #e0d8e0; font-family: 'EB Garamond', serif; overflow: hidden; }
+        .split-screen { display: flex; height: 100vh; }
+
+        /* Левая часть: Модель */
+        .left-side {
+            flex: 4; position: relative; background: #121013;
+            display: flex; justify-content: center; align-items: center;
+        }
+        .gothic-frame {
+            width: 80%; height: 85%; border: 2px solid #5c1a26;
+            position: relative; padding: 10px;
+            background: radial-gradient(circle, #1a181b 0%, #0d0c0e 100%);
+            box-sizing: border-box;
+            overflow: hidden;
+            box-shadow: 
+                inset 0 0 30px rgba(92, 26, 38, 0.3),
+                0 0 20px rgba(92, 26, 38, 0.2);
+        }
+        /* Ажурные элементы рамки */
+        .gothic-frame::before {
+            content: "𓆩♱𓆪"; position: absolute; top: -15px; left: -15px;
+            font-size: 2rem; color: #DCDCDC; background: #0d0c0e; padding: 5px;
+            z-index: 10;
+        }
+        .gothic-frame::after {
+            content: "𓆩♱𓆪"; position: absolute; bottom: -15px; right: -15px;
+            font-size: 2rem; color: #DCDCDC; background: #0d0c0e; padding: 5px;
+            z-index: 10;
+        }
+
+        /* Мягкий градиентный переход - оставляем */
+        .left-side::after {
+            content: ''; position: absolute; top: 0; right: 0; bottom: 0; width: 100px;
+            background: linear-gradient(to right, transparent, #0d0c0e); z-index: 5;
+        }
+
+        /* Правая часть: Информация */
+        .right-side {
+            flex: 6; padding: 60px; overflow-y: auto; z-index: 2;
+        }
+        .char-header { border-bottom: 1px solid #5c1a26; margin-bottom: 30px; padding-bottom: 20px; }
+        .char-name { font-family: 'Ruslan Display', cursive; font-size: 4rem; color: #800000; }
+        .char-data { display: grid; grid-template-columns: 1fr 1fr; gap: 20px; margin-bottom: 30px; opacity: 0.8; }
+        .data-item b { color: #5c1a26; text-transform: uppercase; font-size: 0.9rem; }
+
+        .char-lore { line-height: 1.8; font-size: 1.2rem; text-align: justify; color: #b0a7b0; }
+        .gallery { display: flex; gap: 15px; margin-top: 40px; }
+        .thumb { width: 120px; height: 120px; border: 1px solid #3d3436; background: #1a181b; cursor: pointer; }
+
+        /* Оптимизация контейнера модели */
+        .gothic-frame model-viewer {
+            width: 100% !important;
+            height: 100% !important;
+        }
+
+        /* Кнопка возврата на главную */
+        .return-btn {
+            position: fixed;
+            top: 20px;
+            left: 20px;
+            z-index: 100;
+            text-decoration: none;
+            color: #e0d8e0;
+            font-family: 'Ruslan Display', cursive;
+            font-size: 1.2rem;
+            padding: 10px 25px;
+            background: rgba(10, 9, 11, 0.8);
+            border: 1px solid #5c1a26;
+            transition: all 0.3s ease;
+            clip-path: polygon(15% 0, 85% 0, 100% 50%, 85% 100%, 15% 100%, 0 50%);
+        }
+
+        .return-btn:hover {
+            background: #5c1a26;
+            box-shadow: 0 0 20px rgba(92, 26, 38, 0.7);
+            transform: scale(1.05);
+        }
+    </style>
+</head>
+<body>
+    <!-- Кнопка возврата -->
+    <a href="index.html" class="return-btn">НА ГЛАВНУЮ</a>
+    
+    <div class="split-screen">
+        <div class="left-side">
+            <div class="gothic-frame">
+                <model-viewer 
+                    src="char1.glb" 
+                    alt="3D персонаж"
+            
+                    camera-controls 
+                    auto-rotate 
+            
+                    camera-orbit="0deg 75deg 200%"
+                    field-of-view="45deg"
+            
+                    min-camera-orbit="auto auto 200%"
+                    max-camera-orbit="auto auto 200%"
+                    disable-zoom
+            
+                    min-camera-orbit="auto 75deg auto"
+                    max-camera-orbit="auto 75deg auto"
+            
+                    auto-rotate-delay="500"
+                    rotation-per-second="30deg"
+            
+                    interaction-prompt="none"
+                    exposure="1.2"
+                    shadow-intensity="1"
+            
+                    style="width: 100%; height: 100%; background: transparent;"
+                >
+                    <div slot="poster" style="color: white; text-align: center; margin-top: 50%;">Загрузка...</div>
+                </model-viewer>
+            </div>
+        </div>
+        
+        <div class="right-side">
+            <div class="char-header">
+                <div class="char-name">DOLORES</div>
+                <div style="color: #5c1a26; letter-spacing: 3px;">NUN OF CHURCH</div>
+            </div>
+            <div class="char-data">
+                <div class="data-item"><b>Статус:</b> </div>
+                <div class="data-item"><b>Возраст:</b> </div>
+                <div class="data-item"><b>Роль:</b> </div>
+                <div class="data-item"><b>Способность:</b> </div>
+            </div>
+            <div class="char-lore">
+                <p></p>
+            </div>
+            <div class="gallery">
+                <div class="thumb"></div>
+                <div class="thumb"></div>
+                <div class="thumb"></div>
+            </div>
+        </div>
+    </div>
+</body>
+</html>
